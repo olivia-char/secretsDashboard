@@ -1,0 +1,31 @@
+<div class="container">
+	<h1><%= @user.name %>, What Are Your Secrets?</h1>
+	
+	<form action="/secret/create" method="post">
+ 		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  		<div class="form-group">
+  			<textarea class="form-control" rows="5" id="content" name="secret[content]"></textarea>
+		</div>
+  
+  		<button type="submit" class="btn btn-default">Create a Secret</button>
+	</form>
+
+	<h3><a href="/secrets">View Secrets</a><h3>
+	<h3>My Secrets:</h3>
+
+	<% @secrets.each do |secret| %>
+		<p><%= secret.content %></p>
+		<p><%= secret.likes.count %> likes</p>
+		<button><a href="/secret/<%= secret.id %>" data-method="delete">Delete</a></button>
+	<% end %>
+
+
+	<h3>Secrets Liked:</h3>
+	
+	<% @user.secrets_liked.each do |secret|%>
+		<p><%= secret.content %></p>
+		<p><%= secret.likes.count %> likes</p>
+	<% end %>
+	
+</div>
+
