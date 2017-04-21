@@ -1,6 +1,6 @@
 <div class="container">
 	<h1><%= @user.name %>, What Are Your Secrets?</h1>
-	
+	<p>New Secrets</p>
 	<form action="/secret/create" method="post">
  		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   		<div class="form-group">
